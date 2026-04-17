@@ -1,0 +1,46 @@
+/* ── Header ── */
+
+.echo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-top) + 8px) 20px 8px;
+  position: relative;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, transparent 100%);
+}
+
+.echo-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--cyan);
+  cursor: pointer;
+  animation: glowPulse 3s ease-in-out infinite;
+  user-select: none;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.05);
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:active {
+  transform: scale(0.9);
+}
+
+.nav-btn.active {
+  border-color: var(--pink);
+  color: var(--pink);
+  background: rgba(255, 0, 255, 0.08);
+  box-shadow: var(--glow-pink);
+}

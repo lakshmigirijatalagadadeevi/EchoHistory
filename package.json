@@ -1,0 +1,15 @@
+{
+  "name": "echohistory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Swipe-based news app connecting headlines with historical events via AI",
+  "scripts": {
+    "dev:server": "cd server && node --watch index.js",
+    "dev:client": "cd client && npx vite --host",
+    "build:client": "cd client && npx vite build",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

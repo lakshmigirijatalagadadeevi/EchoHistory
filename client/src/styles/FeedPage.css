@@ -1,0 +1,63 @@
+/* ── Feed Page ── */
+
+.feed-page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.feed-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.feed-swiper .swiper-slide {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Error / Empty States ── */
+.error-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+  padding: 40px;
+  text-align: center;
+}
+
+.error-text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.retry-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  border: none;
+  border-radius: 30px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--glow-purple);
+}
+
+.retry-btn:active {
+  transform: scale(0.95);
+}
+
+/* Loading more indicator slide */
+.loading-more-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}

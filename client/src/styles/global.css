@@ -1,0 +1,116 @@
+/* ── EchoHistory — Global Neon Theme ── */
+
+:root {
+  --bg: #0a0a0a;
+  --bg-card: rgba(15, 15, 25, 0.85);
+  --cyan: #00ffff;
+  --purple: #8a2be2;
+  --pink: #ff00ff;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --radius: 20px;
+  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 255, 255, 0.1);
+  --glow-purple: 0 0 10px rgba(138, 43, 226, 0.4), 0 0 40px rgba(138, 43, 226, 0.1);
+  --glow-pink: 0 0 10px rgba(255, 0, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.1);
+  --font-display: "Rubik Bubbles", cursive;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--purple);
+  border-radius: 2px;
+}
+
+/* ── Animations ── */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 7px var(--cyan),
+      0 0 20px var(--cyan),
+      0 0 40px var(--purple);
+  }
+  50% {
+    text-shadow:
+      0 0 12px var(--cyan),
+      0 0 30px var(--cyan),
+      0 0 60px var(--purple),
+      0 0 80px var(--pink);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulseDot 1.2s ease-in-out infinite;
+}

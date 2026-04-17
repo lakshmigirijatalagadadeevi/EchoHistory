@@ -1,0 +1,46 @@
+/* ── Loader ── */
+
+.loader-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 28px;
+}
+
+.loader-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--cyan);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.loader-ring {
+  display: flex;
+  gap: 8px;
+}
+
+.loader-ring div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulseDot 1.2s ease-in-out infinite;
+}
+
+.loader-ring div:nth-child(2) {
+  animation-delay: 0.2s;
+  background: var(--purple);
+}
+
+.loader-ring div:nth-child(3) {
+  animation-delay: 0.4s;
+  background: var(--pink);
+}
+
+.loader-text {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}

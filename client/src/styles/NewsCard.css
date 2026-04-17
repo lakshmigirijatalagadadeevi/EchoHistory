@@ -1,0 +1,238 @@
+/* ── News Card — Full-screen swipe card ── */
+
+.news-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Background image */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.3) 0%,
+    rgba(10, 10, 10, 0.6) 40%,
+    rgba(10, 10, 10, 0.95) 75%,
+    rgba(10, 10, 10, 1) 100%
+  );
+}
+
+/* Content stack */
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px calc(var(--safe-bottom) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-source {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.card-date {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── AI Insight Panel ── */
+.card-insight {
+  background: var(--bg-card);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card-insight.revealed {
+  border-color: rgba(138, 43, 226, 0.6);
+  box-shadow: var(--glow-purple);
+}
+
+.insight-teaser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--purple);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.insight-icon {
+  font-size: 1.2rem;
+}
+
+.insight-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.4s ease;
+}
+
+.insight-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.insight-year {
+  background: var(--purple);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.insight-category {
+  font-size: 0.7rem;
+  color: var(--pink);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.insight-event {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cyan);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.insight-explanation {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.insight-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ── Action FABs ── */
+.card-fabs {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.bookmark-fab,
+.share-fab {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bookmark-fab:active,
+.share-fab:active {
+  transform: scale(0.85);
+}
+
+.bookmark-fab {
+  border: 1.5px solid rgba(255, 0, 255, 0.4);
+  background: rgba(255, 0, 255, 0.08);
+  color: var(--pink);
+}
+
+.bookmark-fab.saved {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+  box-shadow: var(--glow-pink);
+}
+
+.share-fab {
+  border: 1.5px solid rgba(0, 255, 255, 0.3);
+  background: rgba(0, 255, 255, 0.07);
+  color: var(--cyan);
+}
+
+/* ── Swipe Hint ── */
+.swipe-hint {
+  position: absolute;
+  bottom: calc(var(--safe-bottom) + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease 1s both;
+  pointer-events: none;
+}
